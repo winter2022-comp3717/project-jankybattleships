@@ -10,7 +10,9 @@
         android:id="@+id/textView_leaderboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_gravity="center_horizontal"
+        android:text="@string/top_10_players"
+        android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_leaderboard"

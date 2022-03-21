@@ -1,55 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".OptionsFragment">
+    tools:context=".OptionsFragment"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="20dp">
 
     <TextView
         android:id="@+id/textView_options_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textView_options_nametitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <EditText
-        android:id="@+id/editText_options_namefield"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Name" />
-
-    <Switch
-        android:id="@+id/switch_options"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:text="Switch" />
-
-    <TextView
-        android:id="@+id/textView_options_langtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/options"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_options_nametitle"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinner_options"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minHeight="48dp" />
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="52dp"
+        android:contentDescription="@string/english"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_options" />
+
+    <TextView
+        android:id="@+id/textView_options_nametitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="@string/display_name"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/editText_options_namefield"
+        app:layout_constraintTop_toBottomOf="@+id/textView_options_title" />
+
+    <Switch
+        android:id="@+id/switch_options"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="52dp"
+        android:minHeight="48dp"
+        android:text="@string/dark_mode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_options_namefield" />
+
+    <TextView
+        android:id="@+id/textView_options_langtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/language"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_options"
+        app:layout_constraintStart_toStartOf="@+id/spinner_options" />
+
+    <EditText
+        android:id="@+id/editText_options_namefield"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="9dp"
+        android:ems="10"
+        android:hint="@string/enter_display_name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toStartOf="@+id/button_option_submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_options_nametitle" />
 
     <Button
-        android:id="@+id/button_options"
-        android:layout_width="match_parent"
+        android:id="@+id/button_options_logout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_marginTop="72dp"
+        android:text="@string/log_out"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_options" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/button_option_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="51dp"
+        android:text="@string/submit"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText_options_namefield"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editText_options_namefield" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

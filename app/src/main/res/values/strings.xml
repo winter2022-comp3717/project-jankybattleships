@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">JankyBattleships</string>
+    <string name="janky_battleships">Janky Battleships</string>
+    <string name="join_game">Join Game</string>
+    <string name="host_game">Host Game</string>
+    <string name="top_10_players">Top 10 Players</string>
+    <string name="english">English</string>
+    <string name="options">Options</string>
+    <string name="display_name">Display Name</string>
+    <string name="language">Language</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="enter_display_name">Enter display name</string>
+    <string name="log_out">Log Out</string>
+    <string name="submit">Submit</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
