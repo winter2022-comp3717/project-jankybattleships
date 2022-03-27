@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.firebase.ui.auth.AuthUI;
@@ -17,7 +18,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,10 +38,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        Button button = findViewById(R.id.button2);
-        button.setOnClickListener(view -> {
-            createSignInIntent();
-        });
+        Button button = findViewById(R.id.button_main_login);
+        button.setOnClickListener(view -> createSignInIntent());
     }
 
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     //onClick for login
     public void createSignInIntent() {
         // Choose authentication providers
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
+        List<AuthUI.IdpConfig> providers = Collections.singletonList(
                 new AuthUI.IdpConfig.EmailBuilder().build());
 
         Intent signInIntent = AuthUI.getInstance()
@@ -89,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
             // sign-in flow using the back button. Otherwise check
             // response.getError().getErrorCode() and handle the error.
             // ...
+            assert response != null;
+            int error = Objects.requireNonNull(response.getError()).getErrorCode();
+            Log.e("Firebase Login", "" + error);
         }
     }
 
