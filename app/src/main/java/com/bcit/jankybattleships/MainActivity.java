@@ -24,6 +24,8 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static boolean DARK_MODE = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
