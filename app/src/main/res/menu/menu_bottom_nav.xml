@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItem_bot_nav_leaderboard"
+        android:icon="@drawable/ic_baseline_leaderboard_24"
+        android:title="Leaderboard" />
+    <item
+        android:id="@+id/menuItem_bot_nav_play"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_play_arrow_24"
+        android:title="Play" />
+    <item
+        android:id="@+id/menuItem_bot_nav_options"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Options" />
+</menu>
