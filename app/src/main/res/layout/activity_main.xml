@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -11,11 +11,16 @@
         android:id="@+id/fragmentContainerView"
         android:name="com.bcit.jankybattleships.MenuFragment"
         android:layout_width="match_parent"
-        android:layout_height="92dp" />
+        android:layout_height="505dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavView_main"
+        android:layout_width="match_parent"
+        android:layout_height="49dp" />
 </LinearLayout>
