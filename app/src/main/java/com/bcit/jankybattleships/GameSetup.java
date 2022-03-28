@@ -15,4 +15,9 @@ public class GameSetup extends AppCompatActivity {
     /**
      *
      */
+    public void submitPositions() {
+        /*
+        Take the inputs from the text boxes, convert them to parts a grid and submit to Firebase.
+         */
+    }
 }
