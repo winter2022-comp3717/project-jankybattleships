@@ -11,17 +11,18 @@
         android:id="@+id/fragmentContainerView_main"
         android:name="com.bcit.jankybattleships.MenuFragment"
         android:layout_width="match_parent"
-        android:layout_height="505dp" />
+        android:layout_height="550dp" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
+        android:id="@+id/button_main_login"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_gravity="center"
+        android:text="@string/login" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavView_main"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         app:menu="@menu/menu_bottom_nav" />
 </LinearLayout>

@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JankyBattleships">
         <activity
-            android:name=".GameSetup"
+            android:name=".HostGameActivity"
             android:exported="false" />
         <activity
-            android:name=".MainGame"
+            android:name=".JoinGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShipPlacementActivity"
             android:exported="false" />
         <activity
             android:name=".GameActivity"
