@@ -30,11 +30,9 @@ public class HostGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_host_game);
 
         Button generateButton = findViewById(R.id.button_host_generate);
-        Button checkCodeButton = findViewById(R.id.button_host_checkcode);
         Button startButton = findViewById(R.id.button_host_start);
 
         generateButton.setOnClickListener(view -> generateNewRoomCode());
-        checkCodeButton.setOnClickListener(view -> validateRoomCode());
         startButton.setOnClickListener(view -> startWaitForP2());
     }
 
@@ -44,11 +42,6 @@ public class HostGameActivity extends AppCompatActivity {
         errorTextView.setText("");
         session.setSessionCode(RoomCodeGenerator.generateRoomCode());
         roomCodeTextView.setText(session.getSessionCode());
-    }
-
-    private void validateRoomCode() {
-        TextView roomCodeTextView = findViewById(R.id.textView_host_roomcode);
-        TextView errorTextView = findViewById(R.id.textView_host_error);
         DocumentReference docRef = db.collection("sessions")
                 .document(roomCodeTextView.getText().toString());
         docRef.get().addOnCompleteListener(task -> {
