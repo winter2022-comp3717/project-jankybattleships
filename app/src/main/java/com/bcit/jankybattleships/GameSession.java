@@ -23,30 +23,6 @@ public class GameSession implements Serializable {
 
     public GameSession() {}
 
-    public boolean isUsedRoomCode(String code) {
-        if (code == null)
-            return true;
-        AtomicBoolean usedCode = new AtomicBoolean(true);
-        DocumentReference docRef = db.collection("sessions").document(code);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d("INFO", "DocumentSnapshot data: " + document.getData());
-                    } else {
-                        usedCode.set(false);
-                        Log.d("INFO", "No such document");
-                    }
-                } else {
-                    Log.d("INFO", "get failed with ", task.getException());
-                }
-            }
-        });
-        return usedCode.get();
-    }
-
     public boolean createGameSessionInDb() {
         AtomicBoolean sessionCreated = new AtomicBoolean(false);
         Map<String, Object> room = new HashMap<>();
