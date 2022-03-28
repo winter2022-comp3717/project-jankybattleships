@@ -12,12 +12,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GameSession implements Serializable {
 
     private String sessionCode = null;
     private GameStatus status = null;
+    private Map<String, Long> scores = new HashMap<>();
 
     public GameSession() {}
 
@@ -36,15 +36,18 @@ public class GameSession implements Serializable {
                 .addOnFailureListener(e -> Log.w("ERROR", "Error adding document", e));
     }
 
-    public void updateSessionScoreWithP2() {
+    public void updateSessionOnP2Join() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference df = db.collection("cities").document("DC");
-        Map<String, Object> scores = new HashMap<>();
-        scores.put(getUserIdOrAnonString(2), 0);
-        df.update("scores", scores)
+        DocumentReference df = db.collection("sessions").document(sessionCode);
+        df.update("status", GameStatus.SHIP_PLACEMENT)
                 .addOnSuccessListener(aVoid -> Log.d("INFO",
-                        "DocumentSnapshot successfully updated!"))
-                .addOnFailureListener(e -> Log.w("ERROR", "Error updating document", e));
+                        "Game status successfully updated!"))
+                .addOnFailureListener(e -> Log.w("ERROR", "Error updating status", e));
+
+        df.update(String.format("scores.%s", getUserIdOrAnonString(2)), 0)
+                .addOnSuccessListener(aVoid -> Log.d("INFO",
+                        "Game scores successfully updated!"))
+                .addOnFailureListener(e -> Log.w("ERROR", "Error updating scores", e));
     }
 
     @SuppressLint("DefaultLocale")
@@ -57,7 +60,7 @@ public class GameSession implements Serializable {
         }
     }
 
-    public void updateGameStatus() {
+    public void getUpdatedGameStatus() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("sessions").document(sessionCode);
         docRef.get().addOnCompleteListener(task -> {
@@ -79,28 +82,25 @@ public class GameSession implements Serializable {
         });
     }
 
-    public static GameSession getGameSessionWithCode(String code) {
-        GameSession session = new GameSession();
-        DocumentReference docRef = FirebaseFirestore.getInstance()
-                .collection("sessions").document(code);
+    public void getUpdatedGameScores() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("sessions").document(sessionCode);
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    session.setSessionCode(document.getId());
-                    session.setStatus(GameStatus.SHIP_PLACEMENT);
-                    Log.d("INFO", "Game session found.");
+                    Map<String, Object> scoresMap = (Map<String, Object>) document.get("scores");
+                    for (Map.Entry<String, Object> entry : scoresMap.entrySet()) {
+                        scores.putIfAbsent(entry.getKey(), (Long) entry.getValue());
+                    }
+                    Log.d("INFO", "Updated game scores retrieved.");
                 } else {
-                    Log.d("INFO", "No game session matching code found.");
+                    Log.d("INFO", "No document found.");
                 }
             } else {
                 Log.d("ERROR", "get failed with ", task.getException());
             }
         });
-        if (session.getSessionCode() == null) {
-            return null;
-        }
-        return session;
     }
 
     public String getSessionCode() {
@@ -117,5 +117,13 @@ public class GameSession implements Serializable {
 
     public void setStatus(GameStatus status) {
         this.status = status;
+    }
+
+    public Map<String, Long> getScores() {
+        return scores;
+    }
+
+    public void setScores(Map<String, Long> scores) {
+        this.scores = scores;
     }
 }

@@ -19,5 +19,6 @@ public class ShipPlacementActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         session = (GameSession) extras.getSerializable(MainActivity.EXTRA_NEW_GAME_SESSION);
         player = (Player) extras.getSerializable(MainActivity.EXTRA_PLAYER);
+        session.getUpdatedGameScores();
     }
 }

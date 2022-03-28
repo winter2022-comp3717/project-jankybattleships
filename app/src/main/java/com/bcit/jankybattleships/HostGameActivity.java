@@ -80,7 +80,7 @@ public class HostGameActivity extends AppCompatActivity {
             @SuppressLint("DefaultLocale")
             @Override
             public void run() {
-                session.updateGameStatus();
+                session.getUpdatedGameStatus();
                 if (session.getStatus() == GameStatus.SHIP_PLACEMENT) {
                     Intent intent = new Intent(getApplicationContext(),
                             ShipPlacementActivity.class);

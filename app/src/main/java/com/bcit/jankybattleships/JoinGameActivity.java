@@ -5,17 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class JoinGameActivity extends AppCompatActivity {
-
-    private GameSession session = null;
-    private String code;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -25,35 +26,41 @@ public class JoinGameActivity extends AppCompatActivity {
 
         Button button = findViewById(R.id.button_join_submit);
         button.setOnClickListener(v -> joinGameSession());
-
-        if (session != null) {
-            Intent intent = new Intent(this, ShipPlacementActivity.class);
-            Bundle extras = new Bundle();
-            extras.putSerializable(MainActivity.EXTRA_NEW_GAME_SESSION, session);
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            if (user != null) {
-                extras.putSerializable(MainActivity.EXTRA_PLAYER,
-                        new Player(user.getUid(), 2));
-            } else {
-                extras.putSerializable(MainActivity.EXTRA_PLAYER,
-                        new Player(session.getUserIdOrAnonString(2), 2));
-            }
-            intent.putExtras(extras);
-            startActivity(intent);
-        }
     }
 
     private void joinGameSession() {
+        final GameSession session = new GameSession();
         TextView errorTextView = findViewById(R.id.textView_join_error);
         EditText editText = findViewById(R.id.editText_join);
-        code = editText.getText().toString();
-        GameSession tempSession = GameSession.getGameSessionWithCode(code);
-        if (tempSession != null) {
-            session = tempSession;
-            errorTextView.setText("");
-        } else {
-            errorTextView.setText(R.string.invalid_room_code);
-        }
-        editText.setText("");
+        String code = editText.getText().toString();
+
+        DocumentReference docRef = FirebaseFirestore.getInstance()
+                .collection("sessions").document(code);
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                editText.setText("");
+                if (document.exists()) {
+                    session.setSessionCode(document.getId());
+                    session.setStatus(GameStatus.SHIP_PLACEMENT);
+                    errorTextView.setText("");
+                    session.updateSessionOnP2Join();
+
+                    Intent intent = new Intent(this, ShipPlacementActivity.class);
+                    Bundle extras = new Bundle();
+                    extras.putSerializable(MainActivity.EXTRA_NEW_GAME_SESSION, session);
+                    extras.putSerializable(MainActivity.EXTRA_PLAYER,
+                            new Player(session.getUserIdOrAnonString(2), 2));
+                    intent.putExtras(extras);
+                    startActivity(intent);
+                    Log.d("INFO", "Game session found.");
+                } else {
+                    errorTextView.setText(R.string.invalid_room_code);
+                    Log.d("INFO", "No game session matching code found.");
+                }
+            } else {
+                Log.d("ERROR", "get failed with ", task.getException());
+            }
+        });
     }
 }
