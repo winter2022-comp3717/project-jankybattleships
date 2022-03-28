@@ -1,12 +1,18 @@
 package com.bcit.jankybattleships;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +25,7 @@ public class MenuFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
 
     private String mParam1;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public MenuFragment() {
         // Required empty public constructor
@@ -51,5 +58,20 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button hostButton = view.findViewById(R.id.button_menu_host);
+        Button joinButton = view.findViewById(R.id.button_menu_join);
+        hostButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), HostGameActivity.class);
+            startActivity(intent);
+        });
+        joinButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), JoinGameActivity.class);
+            startActivity(intent);
+        });
     }
 }

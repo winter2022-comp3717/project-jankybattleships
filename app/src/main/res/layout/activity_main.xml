@@ -14,10 +14,10 @@
         android:layout_height="505dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Login" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavView_main"
