@@ -15,6 +15,10 @@
     <string name="rotate">Rotate Ship</string>
     <string name="confirm_place">Confirm Placement</string>
     <string name="blank_button"> </string>
+    <string name="patrol">Patrol Boat</string>
+    <string name="destroyer">Destroyer</string>
+    <string name="cruiser">Cruiser</string>
+    <string name="coordinate_input">Enter Co-ordinates Here</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
