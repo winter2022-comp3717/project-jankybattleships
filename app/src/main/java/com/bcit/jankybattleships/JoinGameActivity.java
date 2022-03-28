@@ -23,20 +23,9 @@ public class JoinGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_game);
 
-        TextView errorTextView = findViewById(R.id.textView_join_error);
-        EditText editText = findViewById(R.id.editText_join);
         Button button = findViewById(R.id.button_join_submit);
-        button.setOnClickListener(v -> {
-            code = editText.getText().toString();
-            GameSession tempSession = GameSession.getGameSessionWithCode(code);
-            if (tempSession != null) {
-                session = tempSession;
-                errorTextView.setText("");
-            } else {
-                errorTextView.setText(R.string.invalid_room_code);
-            }
-            editText.setText("");
-        });
+        button.setOnClickListener(v -> joinGameSession());
+
         if (session != null) {
             Intent intent = new Intent(this, ShipPlacementActivity.class);
             Bundle extras = new Bundle();
@@ -47,10 +36,24 @@ public class JoinGameActivity extends AppCompatActivity {
                         new Player(user.getUid(), 2));
             } else {
                 extras.putSerializable(MainActivity.EXTRA_PLAYER,
-                        new Player(String.format("Anon%s%d", session.getSessionCode(), 2), 2));
+                        new Player(session.getUserIdOrAnonString(2), 2));
             }
             intent.putExtras(extras);
             startActivity(intent);
         }
+    }
+
+    private void joinGameSession() {
+        TextView errorTextView = findViewById(R.id.textView_join_error);
+        EditText editText = findViewById(R.id.editText_join);
+        code = editText.getText().toString();
+        GameSession tempSession = GameSession.getGameSessionWithCode(code);
+        if (tempSession != null) {
+            session = tempSession;
+            errorTextView.setText("");
+        } else {
+            errorTextView.setText(R.string.invalid_room_code);
+        }
+        editText.setText("");
     }
 }

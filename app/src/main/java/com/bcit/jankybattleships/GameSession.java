@@ -1,11 +1,10 @@
 package com.bcit.jankybattleships;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -17,39 +16,56 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GameSession implements Serializable {
 
-    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String sessionCode = null;
     private GameStatus status = null;
 
     public GameSession() {}
 
-    public boolean createGameSessionInDb() {
-        AtomicBoolean sessionCreated = new AtomicBoolean(false);
+    public void createGameSessionInDb() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Object> room = new HashMap<>();
         room.put("status", status);
-        room.put("scores", new HashMap<String, Object>());
+
+        Map<String, Object> scores = new HashMap<>();
+        scores.put(getUserIdOrAnonString(1), 0);
+        room.put("scores", scores);
+
         db.collection("sessions").document(sessionCode)
                 .set(room)
-                .addOnSuccessListener(aVoid -> {
-                    sessionCreated.set(true);
-                    Log.d("INFO", "New game session added.");
-                })
-                .addOnFailureListener(e -> {
-                    Log.w("ERROR", "Error adding document", e);
-                });
-        return sessionCreated.get();
+                .addOnSuccessListener(aVoid -> Log.d("INFO", "New game session added."))
+                .addOnFailureListener(e -> Log.w("ERROR", "Error adding document", e));
     }
 
-    public boolean updateGameStatus() {
-        AtomicBoolean gameStatusChanged = new AtomicBoolean(false);
+    public void updateSessionScoreWithP2() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference df = db.collection("cities").document("DC");
+        Map<String, Object> scores = new HashMap<>();
+        scores.put(getUserIdOrAnonString(2), 0);
+        df.update("scores", scores)
+                .addOnSuccessListener(aVoid -> Log.d("INFO",
+                        "DocumentSnapshot successfully updated!"))
+                .addOnFailureListener(e -> Log.w("ERROR", "Error updating document", e));
+    }
+
+    @SuppressLint("DefaultLocale")
+    public String getUserIdOrAnonString(int playerNum) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            return user.getUid();
+        } else {
+            return String.format("Anon%s%d", sessionCode, playerNum);
+        }
+    }
+
+    public void updateGameStatus() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("sessions").document(sessionCode);
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    if (!status.equals(document.get("status"))) {
-                        gameStatusChanged.set(true);
-                        status = (GameStatus) document.get("status");
+                    if (!status.getStatus().equals(document.get("status"))) {
+                        status = GameStatus.valueOf((String) document.get("status"));
                         Log.d("INFO", "Game status has changed.");
                     } else {
                         Log.d("INFO", "Game status is unchanged.");
@@ -61,7 +77,6 @@ public class GameSession implements Serializable {
                 Log.d("ERROR", "get failed with ", task.getException());
             }
         });
-        return gameStatusChanged.get();
     }
 
     public static GameSession getGameSessionWithCode(String code) {
