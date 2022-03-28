@@ -32,4 +32,5 @@
     <string name="cruiser_input">Enter Co-ordinates Here</string>
     <string name="confirm_place">Confirm Placement</string>
     <string name="blank_button"> </string>
+    <string name="place_your_ships">Place Your Ships!</string>
 </resources>
