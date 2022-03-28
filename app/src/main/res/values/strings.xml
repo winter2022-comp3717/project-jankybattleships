@@ -23,4 +23,6 @@
     <string name="valid_room_code">Game code is valid!</string>
     <string name="check_code_validity">Check Code Validity</string>
     <string name="start_game">Start Game</string>
+    <string name="login">Login</string>
+
 </resources>
