@@ -24,5 +24,12 @@
     <string name="check_code_validity">Check Code Validity</string>
     <string name="start_game">Start Game</string>
     <string name="login">Login</string>
-
+    <string name="patrol">Patrol Boat</string>
+    <string name="destroyer">Destroyer</string>
+    <string name="cruiser">Cruiser</string>
+    <string name="patrol_input">Enter Co-ordinates Here</string>
+    <string name="coordinate_input">Enter Co-ordinates Here</string>
+    <string name="cruiser_input">Enter Co-ordinates Here</string>
+    <string name="confirm_place">Confirm Placement</string>
+    <string name="blank_button"> </string>
 </resources>
