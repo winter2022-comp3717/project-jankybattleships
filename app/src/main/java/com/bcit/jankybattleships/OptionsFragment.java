@@ -6,12 +6,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
 
@@ -76,6 +82,24 @@ public class OptionsFragment extends Fragment {
                     requireContext().setTheme(R.style.Theme_JankyBattleships);
                     MainActivity.DARK_MODE = false;
                 }
+            }
+        });
+
+        Button signOutButton = view.findViewById(R.id.button_options_logout);
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthUI.getInstance()
+                        .signOut(getContext())
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            public void onComplete(@NonNull Task<Void> task) {
+                                FragmentTransaction fragmentTransaction =
+                                        getParentFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.fragmentContainerView_main,
+                                        MenuFragment.newInstance());
+                                fragmentTransaction.commit();
+                            }
+                        });
             }
         });
 

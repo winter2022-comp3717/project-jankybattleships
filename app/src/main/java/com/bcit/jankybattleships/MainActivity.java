@@ -51,7 +51,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button button = findViewById(R.id.button_main_login);
+
         button.setOnClickListener(view -> createSignInIntent());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Button button = findViewById(R.id.button_main_login);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            button.setEnabled(false);
+            button.setText(R.string.logged_in);
+        } else {
+            button.setEnabled(true);
+            button.setText(R.string.login);
+        }
     }
 
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(

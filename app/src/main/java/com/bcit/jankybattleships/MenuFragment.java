@@ -27,6 +27,7 @@ public class MenuFragment extends Fragment {
     private String mParam1;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+
     public MenuFragment() {
         // Required empty public constructor
     }
@@ -63,6 +64,7 @@ public class MenuFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         Button hostButton = view.findViewById(R.id.button_menu_host);
         Button joinButton = view.findViewById(R.id.button_menu_join);
         hostButton.setOnClickListener(v -> {
