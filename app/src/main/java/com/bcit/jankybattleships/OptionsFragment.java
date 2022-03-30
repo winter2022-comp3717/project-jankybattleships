@@ -89,6 +89,8 @@ public class OptionsFragment extends Fragment {
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("Signout");
+                ((MainActivity) requireActivity()).fixButton();
                 AuthUI.getInstance()
                         .signOut(getContext())
                         .addOnCompleteListener(new OnCompleteListener<Void>() {

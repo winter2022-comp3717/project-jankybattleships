@@ -69,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    protected void fixButton() {
+        Button button = findViewById(R.id.button_main_login);
+        button.setEnabled(true);
+        button.setText(R.string.login);
+    }
+
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
             this::onSignInResult);
