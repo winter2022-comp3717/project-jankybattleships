@@ -76,12 +76,11 @@ public class OptionsFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    requireContext().setTheme(R.style.Theme_JankyBattleshipsDark);
                     MainActivity.DARK_MODE = true;
                 } else {
-                    requireContext().setTheme(R.style.Theme_JankyBattleships);
                     MainActivity.DARK_MODE = false;
                 }
+                ((MainActivity) requireActivity()).setLightMode(view);
             }
         });
 
