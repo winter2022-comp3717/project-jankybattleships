@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void setModeMain() {
+    public void setModeMain() {
         if (DARK_MODE) {
             setTheme(R.style.Theme_JankyBattleshipsDark);
             getWindow().getDecorView().setBackgroundColor(Color.BLACK);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void updateNavTheme() {
+    public void updateNavTheme() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView_main);
         if (DARK_MODE) {
             bottomNavigationView.setBackgroundColor(getResources().getColor(R.color.grey));
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void fixButton() {
+    public void fixButton() {
         Button button = findViewById(R.id.button_main_login);
         button.setEnabled(true);
         button.setText(R.string.login);

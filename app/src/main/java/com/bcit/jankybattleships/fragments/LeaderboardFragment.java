@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bcit.jankybattleships.LeaderboardAdapter;
+import com.bcit.jankybattleships.MainActivity;
 import com.bcit.jankybattleships.R;
 
 /**

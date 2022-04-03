@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bcit.jankybattleships.HostGameActivity;
 import com.bcit.jankybattleships.JoinGameActivity;
+import com.bcit.jankybattleships.MainActivity;
 import com.bcit.jankybattleships.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
