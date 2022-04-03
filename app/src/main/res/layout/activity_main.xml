@@ -11,7 +11,7 @@
         android:id="@+id/fragmentContainerView_main"
         android:name="com.bcit.jankybattleships.MenuFragment"
         android:layout_width="match_parent"
-        android:layout_height="550dp" />
+        android:layout_height="503dp" />
 
     <Button
         android:id="@+id/button_main_login"

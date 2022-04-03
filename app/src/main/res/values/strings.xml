@@ -37,4 +37,6 @@
     <string name="preview">Preview Placement</string>
     <string name="p1_score">Player 1 Score</string>
     <string name="p2_score">Player 2 Score</string>
+    <string name="place_your_ships">Place Your Ships!</string>
+    <string name="logged_in">Logged In</string>
 </resources>
