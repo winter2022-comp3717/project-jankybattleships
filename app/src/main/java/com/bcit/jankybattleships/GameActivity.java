@@ -17,8 +17,17 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_setup);
+
+        Button submit = findViewById(R.id.confirm_attack);
+        Button swap = findViewById(R.id.swap);
+
+        submit.setOnClickListener(effect -> confirmAttackOnClick());
+        swap.setOnClickListener(swapBoard -> swapBoardOnClick());
     }
 
+    /**
+     * Swap between displaying the player board and the opponent board.
+     */
     public void swapBoardOnClick() {
         // Fragment Swapping between your board and your opponents.
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -27,11 +36,19 @@ public class GameActivity extends AppCompatActivity {
         if(!showPlayerBoard) {
             fragmentTransaction.replace(R.id.main_game_fragment, new GameFragment());
         } else {
-            fragmentTransaction.replace(R.id.main_game_fragment, new GameFragment());
+            fragmentTransaction.replace(R.id.main_game_fragment, new GameFragment()); // Needs to be changed.
             showPlayerBoard = true;
         }
 
         fragmentTransaction.commit();
+    }
+
+    /**
+     * Take the selected guess and add the grid co-ordinates
+     */
+    public void confirmAttackOnClick() {
+        targetEffect();
+        updateHostileGrid();
     }
 
     /**
@@ -46,6 +63,7 @@ public class GameActivity extends AppCompatActivity {
      * Send updated opponent grid back to Firebase.
      */
     public void updateHostileGrid(String[] guesses) {
+        // Needs to write the the list of player guesses to firebase.
         db.collection("sessions").document();
     }
 
@@ -53,36 +71,22 @@ public class GameActivity extends AppCompatActivity {
      * Retrieve updated friendly grid from Firebase.
      */
     public void getFriendlyGrid() {
-
+        // Get the opponents guesses from firebase and run display grid.
     }
 
     /**
      * Display the given grid to the fragment.
      */
-    public void displayGrid() {
-
-    }
-
-    /**
-     * Swap fragment view between your grid and your opponents when switch view is pressed.
-     */
-    public void swapView() {
-
+    public void displayGrid(String[] guesses) {
+        for (String point: guesses) {
+            // Need to get appropriate button from string and pass to target effect.
+            targetEffect();
+        }
     }
 
     /**
      * Set the grid color according to presence of a ship.
      */
-    public void targetEffect() {
-
-    }
-
-    /**
-     * Submit the upgraded grid
-     */
-    public void submitMove() {
-        // Button submit = findViewById() TODO: Submit button ID here
-        targetEffect();
-        updateHostileGrid();
+    public void targetEffect(Button gridPoint) {
     }
 }
