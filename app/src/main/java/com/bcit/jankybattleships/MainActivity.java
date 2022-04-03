@@ -69,7 +69,26 @@ public class MainActivity extends AppCompatActivity {
             button.setEnabled(true);
             button.setText(R.string.login);
         }
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView_main);
+        if (DARK_MODE) {
+            setTheme(R.style.Theme_JankyBattleshipsDark);
+            getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+            bottomNavigationView.setBackgroundColor(getResources().getColor(R.color.grey));
+        } else {
+            getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+            setTheme(R.style.Theme_JankyBattleships);
+            bottomNavigationView.setBackgroundColor(Color.WHITE);
+        }
+    }
 
+    protected void setModeMain() {
+        if (DARK_MODE) {
+            setTheme(R.style.Theme_JankyBattleshipsDark);
+            getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+        } else {
+            getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+            setTheme(R.style.Theme_JankyBattleships);
+        }
     }
 
     protected void setLightMode(View view) {
@@ -81,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.Theme_JankyBattleships);
             int color = Color.WHITE;
             view.setBackgroundColor(color);
+        }
+    }
+
+    protected void updateNavTheme() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView_main);
+        if (DARK_MODE) {
+            bottomNavigationView.setBackgroundColor(getResources().getColor(R.color.grey));
+        } else {
+            bottomNavigationView.setBackgroundColor(Color.WHITE);
         }
     }
 

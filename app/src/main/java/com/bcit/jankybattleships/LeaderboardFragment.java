@@ -1,5 +1,6 @@
 package com.bcit.jankybattleships;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,5 +64,12 @@ public class LeaderboardFragment extends Fragment {
         RecyclerView recyc = view.findViewById(R.id.recyclerView_leaderboard);
         LeaderboardAdapter adapter = new LeaderboardAdapter(new String[]{"apple", "banana"});
         recyc.setAdapter(adapter);
+
+        TextView title = view.findViewById(R.id.textView_leaderboard);
+        if (MainActivity.DARK_MODE) {
+            title.setTextColor(Color.WHITE);
+        } else {
+            title.setTextColor(Color.BLACK);
+        }
     }
 }

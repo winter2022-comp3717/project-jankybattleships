@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -28,6 +29,19 @@ public class HostGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_game);
+
+        TextView label = findViewById(R.id.textView_host_codelabel);
+        TextView wait = findViewById(R.id.textView_host_wait);
+
+        if (MainActivity.DARK_MODE) {
+            getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+            label.setTextColor(Color.WHITE);
+            wait.setTextColor(Color.WHITE);
+        } else {
+            getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+            label.setTextColor(Color.BLACK);
+            wait.setTextColor(Color.BLACK);
+        }
 
         Button generateButton = findViewById(R.id.button_host_generate);
         Button startButton = findViewById(R.id.button_host_start);
