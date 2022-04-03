@@ -32,4 +32,9 @@
     <string name="cruiser_input">Enter Co-ordinates Here</string>
     <string name="confirm_place">Confirm Placement</string>
     <string name="blank_button"> </string>
+    <string name="swap">Swap</string>
+    <string name="confirm_move">Confirm Attack</string>
+    <string name="preview">Preview Placement</string>
+    <string name="p1_score">Player 1 Score</string>
+    <string name="p2_score">Player 2 Score</string>
 </resources>

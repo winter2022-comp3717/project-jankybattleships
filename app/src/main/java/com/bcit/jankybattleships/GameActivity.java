@@ -1,6 +1,7 @@
 package com.bcit.jankybattleships;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,21 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_setup);
     }
 
+    public void swapBoardOnClick() {
+        // Fragment Swapping between your board and your opponents.
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        boolean showPlayerBoard = false;
+
+        if(!showPlayerBoard) {
+            fragmentTransaction.replace(R.id.main_game_fragment, new GameFragment());
+        } else {
+            fragmentTransaction.replace(R.id.main_game_fragment, new GameFragment());
+            showPlayerBoard = true;
+        }
+
+        fragmentTransaction.commit();
+    }
+
     /**
      * Retrieve the opponents grid array from Firebase.
      */
@@ -29,8 +45,8 @@ public class GameActivity extends AppCompatActivity {
     /**
      * Send updated opponent grid back to Firebase.
      */
-    public void updateHostileGrid() {
-
+    public void updateHostileGrid(String[] guesses) {
+        db.collection("sessions").document();
     }
 
     /**
