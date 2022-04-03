@@ -1,4 +1,4 @@
-package com.bcit.jankybattleships;
+package com.bcit.jankybattleships.data;
 
 public enum GameStatus {
     JOIN_WAIT("JOIN_WAIT"),

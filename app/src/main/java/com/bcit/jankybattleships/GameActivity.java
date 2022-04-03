@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.bcit.jankybattleships.R;
+import com.bcit.jankybattleships.fragments.GameFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -16,7 +18,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_setup);
+        setContentView(R.layout.activity_game);
     }
 
     public void swapBoardOnClick() {
@@ -83,6 +85,6 @@ public class GameActivity extends AppCompatActivity {
     public void submitMove() {
         // Button submit = findViewById() TODO: Submit button ID here
         targetEffect();
-        updateHostileGrid();
+        updateHostileGrid(null); // TODO: fix null
     }
 }
