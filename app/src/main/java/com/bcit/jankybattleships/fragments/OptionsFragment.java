@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -74,17 +75,20 @@ public class OptionsFragment extends Fragment {
         TextView name = view.findViewById(R.id.textView_options_nametitle);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchy = view.findViewById(R.id.switch_options);
         TextView lang = view.findViewById(R.id.textView_options_langtitle);
+        EditText change = view.findViewById(R.id.editText_options_namefield);
 
         if (MainActivity.DARK_MODE) {
             title.setTextColor(Color.WHITE);
             name.setTextColor(Color.WHITE);
             switchy.setTextColor(Color.WHITE);
             lang.setTextColor(Color.WHITE);
+            change.setTextColor(Color.WHITE);
         } else {
             title.setTextColor(Color.BLACK);
             name.setTextColor(Color.BLACK);
             switchy.setTextColor(Color.BLACK);
             lang.setTextColor(Color.BLACK);
+            change.setTextColor(Color.BLACK);
         }
     }
 
@@ -110,6 +114,17 @@ public class OptionsFragment extends Fragment {
         });
 
         updateTheme(view);
+
+        Button nameButton = view.findViewById(R.id.button_option_submit);
+        nameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                EditText change = (EditText) view.findViewById(R.id.editText_options_namefield);
+//                String name = change.getText().toString();
+//                //do something with name
+//                change.setText("");
+            }
+        });
 
         Button signOutButton = view.findViewById(R.id.button_options_logout);
         signOutButton.setOnClickListener(v -> {
