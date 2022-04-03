@@ -1,4 +1,4 @@
-package com.bcit.jankybattleships;
+package com.bcit.jankybattleships.data;
 
 import java.io.Serializable;
 

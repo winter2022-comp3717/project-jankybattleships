@@ -1,4 +1,4 @@
-package com.bcit.jankybattleships;
+package com.bcit.jankybattleships.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,11 +15,11 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
+import com.bcit.jankybattleships.MainActivity;
+import com.bcit.jankybattleships.R;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +31,7 @@ public class OptionsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
 
-    private String mParam1;
+//    private String mParam1;
 
     public OptionsFragment() {
         // Required empty public constructor
@@ -54,9 +54,9 @@ public class OptionsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-        }
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//        }
 
     }
 
@@ -72,36 +72,24 @@ public class OptionsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Switch theme = view.findViewById(R.id.switch_options);
-        theme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    MainActivity.DARK_MODE = true;
-                } else {
-                    MainActivity.DARK_MODE = false;
-                }
-                ((MainActivity) requireActivity()).setLightMode(view);
-            }
+        theme.setOnCheckedChangeListener((compoundButton, b) -> {
+            MainActivity.DARK_MODE = b;
+            ((MainActivity) requireActivity()).setLightMode(view);
         });
 
         Button signOutButton = view.findViewById(R.id.button_options_logout);
-        signOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("Signout");
-                ((MainActivity) requireActivity()).fixButton();
-                AuthUI.getInstance()
-                        .signOut(getContext())
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            public void onComplete(@NonNull Task<Void> task) {
-                                FragmentTransaction fragmentTransaction =
-                                        getParentFragmentManager().beginTransaction();
-                                fragmentTransaction.replace(R.id.fragmentContainerView_main,
-                                        MenuFragment.newInstance());
-                                fragmentTransaction.commit();
-                            }
-                        });
-            }
+        signOutButton.setOnClickListener(v -> {
+            System.out.println("Signout");
+            ((MainActivity) requireActivity()).fixButton();
+            AuthUI.getInstance()
+                    .signOut(getContext())
+                    .addOnCompleteListener(task -> {
+                        FragmentTransaction fragmentTransaction =
+                                getParentFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragmentContainerView_main,
+                                MenuFragment.newInstance());
+                        fragmentTransaction.commit();
+                    });
         });
 
     }

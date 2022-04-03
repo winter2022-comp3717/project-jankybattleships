@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainGame">
+    tools:context=".GameActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
-        android:name="com.bcit.jankybattleships.GameFragment"
+        android:name="com.bcit.jankybattleships.fragments.GameFragment"
         android:layout_width="240dp"
         android:layout_height="272dp"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="101dp" />
+        android:layout_marginTop="101dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

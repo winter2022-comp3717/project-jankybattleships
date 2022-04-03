@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.bcit.jankybattleships.data.GameSession;
+import com.bcit.jankybattleships.data.Player;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class ShipPlacementActivity extends AppCompatActivity {
+public class GameSetupActivity extends AppCompatActivity {
 
     private GameSession session;
     private Player player;
@@ -18,7 +20,7 @@ public class ShipPlacementActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ship_placement);
+        setContentView(R.layout.activity_game_setup);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -41,5 +43,14 @@ public class ShipPlacementActivity extends AppCompatActivity {
                 Log.d("ERROR", "get failed with ", task.getException());
             }
         });
+    }
+
+    /**
+     *
+     */
+    public void submitPositions() {
+        /*
+        Take the inputs from the text boxes, convert them to parts a grid and submit to Firebase.
+         */
     }
 }
