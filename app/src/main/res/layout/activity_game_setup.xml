@@ -4,94 +4,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    tools:context=".GameSetupActivity"
+    tools:layout_editor_absoluteX="7dp"
+    tools:layout_editor_absoluteY="-42dp">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.bcit.jankybattleships.GameFragment"
-        android:layout_width="348dp"
-        android:layout_height="391dp"
-        android:layout_marginTop="32dp"
+        android:id="@+id/placement_preview"
+        android:name="com.bcit.jankybattleships.fragments.GameFragment"
+        android:layout_width="345dp"
+        android:layout_height="269dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/patrol_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/confirm_placement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/confirm_place"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preview_placement" />
 
-    <LinearLayout
-        android:layout_width="315dp"
-        android:layout_height="336dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+    <TextView
+        android:id="@+id/cruiser_input"
+        android:layout_width="302dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_weight="1"
+        android:text="@string/cruiser"
+        app:layout_constraintBottom_toTopOf="@+id/cruiser_pos_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView"
-        app:layout_constraintVertical_bias="0.708">
+        app:layout_constraintTop_toBottomOf="@+id/destroyer_pos_input" />
 
-        <TextView
-            android:id="@+id/patrol_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_weight="1"
-            android:text="@string/patrol" />
+    <TextView
+        android:id="@+id/patrol_input"
+        android:layout_width="302dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="54dp"
+        android:layout_weight="1"
+        android:text="@string/patrol"
+        app:layout_constraintBottom_toTopOf="@+id/patrol_pos_input"
+        app:layout_constraintEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placement_preview" />
 
-        <EditText
-            android:id="@+id/patrol_pos_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/coordinate_input" />
+    <EditText
+        android:id="@+id/patrol_pos_input"
+        android:layout_width="299dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/coordinate_input"
+        app:layout_constraintBottom_toTopOf="@+id/destroyer_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patrol_input" />
 
-        <TextView
-            android:id="@+id/destroyer_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
-            android:layout_weight="1"
-            android:text="@string/destroyer" />
+    <TextView
+        android:id="@+id/destroyer_input"
+        android:layout_width="301dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_weight="1"
+        android:text="@string/destroyer"
+        app:layout_constraintBottom_toTopOf="@+id/destroyer_pos_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patrol_pos_input" />
 
-        <EditText
-            android:id="@+id/destroyer_pos_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/coordinate_input" />
+    <EditText
+        android:id="@+id/destroyer_pos_input"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/coordinate_input"
+        app:layout_constraintBottom_toTopOf="@+id/cruiser_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/destroyer_input" />
 
-        <TextView
-            android:id="@+id/cruiser_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_weight="1"
-            android:text="@string/cruiser" />
+    <EditText
+        android:id="@+id/cruiser_pos_input"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="171dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/coordinate_input"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cruiser_input" />
 
-        <EditText
-            android:id="@+id/cruiser_pos_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/coordinate_input" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/preview_placement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/preview"
+        app:layout_constraintBottom_toTopOf="@+id/confirm_placement"
+        app:layout_constraintStart_toStartOf="@+id/confirm_placement"
+        app:layout_constraintTop_toBottomOf="@+id/cruiser_pos_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

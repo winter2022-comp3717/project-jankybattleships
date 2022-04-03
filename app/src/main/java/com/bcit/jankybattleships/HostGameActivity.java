@@ -13,6 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bcit.jankybattleships.data.GameSession;
+import com.bcit.jankybattleships.data.GameStatus;
+import com.bcit.jankybattleships.data.Player;
+import com.bcit.jankybattleships.data.RoomCodeGenerator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -90,7 +94,7 @@ public class HostGameActivity extends AppCompatActivity {
                 session.getUpdatedGameStatus();
                 if (session.getStatus() == GameStatus.SHIP_PLACEMENT) {
                     Intent intent = new Intent(getApplicationContext(),
-                            ShipPlacementActivity.class);
+                            GameSetupActivity.class);
                     Bundle extras = new Bundle();
                     extras.putSerializable(MainActivity.EXTRA_NEW_GAME_SESSION, session);
                     extras.putSerializable(MainActivity.EXTRA_PLAYER,

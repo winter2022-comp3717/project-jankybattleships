@@ -11,8 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.bcit.jankybattleships.data.GameSession;
+import com.bcit.jankybattleships.data.GameStatus;
+import com.bcit.jankybattleships.data.Player;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -61,7 +62,7 @@ public class JoinGameActivity extends AppCompatActivity {
                     errorTextView.setText("");
                     session.updateSessionOnP2Join();
 
-                    Intent intent = new Intent(this, ShipPlacementActivity.class);
+                    Intent intent = new Intent(this, GameSetupActivity.class);
                     Bundle extras = new Bundle();
                     extras.putSerializable(MainActivity.EXTRA_NEW_GAME_SESSION, session);
                     extras.putSerializable(MainActivity.EXTRA_PLAYER,
