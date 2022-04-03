@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView_main"
-        android:name="com.bcit.jankybattleships.MenuFragment"
+        android:name="com.bcit.jankybattleships.fragments.MenuFragment"
         android:layout_width="match_parent"
         android:layout_height="503dp" />
 

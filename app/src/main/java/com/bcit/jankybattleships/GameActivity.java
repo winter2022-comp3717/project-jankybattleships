@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.bcit.jankybattleships.R;
+import com.bcit.jankybattleships.fragments.GameFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -17,6 +19,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_setup);
+        setContentView(R.layout.activity_game);
 
         Button submit = findViewById(R.id.confirm_attack);
         Button swap = findViewById(R.id.swap);

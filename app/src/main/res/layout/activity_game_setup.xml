@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity"
+    tools:context=".GameSetupActivity"
     tools:layout_editor_absoluteX="7dp"
     tools:layout_editor_absoluteY="-42dp">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/placement_preview"
-        android:name="com.bcit.jankybattleships.GameFragment"
+        android:name="com.bcit.jankybattleships.fragments.GameFragment"
         android:layout_width="345dp"
         android:layout_height="269dp"
         android:layout_marginTop="28dp"
@@ -50,8 +50,6 @@
         android:id="@+id/patrol_input"
         android:layout_width="302dp"
         android:layout_height="28dp"
-        android:layout_marginStart="54dp"
-        android:layout_marginEnd="54dp"
         android:layout_weight="1"
         android:text="@string/patrol"
         app:layout_constraintBottom_toTopOf="@+id/patrol_pos_input"
@@ -62,7 +60,7 @@
     <EditText
         android:id="@+id/patrol_pos_input"
         android:layout_width="299dp"
-        android:layout_height="41dp"
+        android:layout_height="48dp"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
         android:layout_marginBottom="1dp"
