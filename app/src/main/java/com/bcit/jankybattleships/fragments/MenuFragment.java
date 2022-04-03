@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bcit.jankybattleships.HostGameActivity;
 import com.bcit.jankybattleships.JoinGameActivity;
+import com.bcit.jankybattleships.MainActivity;
 import com.bcit.jankybattleships.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -27,10 +28,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class MenuFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+//    private static final String ARG_PARAM1 = "param1";
 
-    private String mParam1;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//    private String mParam1;
 
 
     public MenuFragment() {
@@ -54,9 +54,9 @@ public class MenuFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-        }
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//        }
     }
 
     @Override

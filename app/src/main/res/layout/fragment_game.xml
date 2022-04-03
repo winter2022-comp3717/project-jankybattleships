@@ -1,287 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".fragments.GameFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <Button
-        android:id="@+id/grid_4_5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="72dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_5_5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/grid_4_4"
-        app:layout_constraintTop_toBottomOf="@+id/grid_3_5" />
-
-    <Button
-        android:id="@+id/gird_3_1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="71dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_4_1"
-        app:layout_constraintEnd_toStartOf="@+id/grid_3_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grid_2_1" />
-
-    <Button
-        android:id="@+id/grid_1_3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="110dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_2_3"
-        app:layout_constraintEnd_toStartOf="@+id/grid_1_4"
-        app:layout_constraintStart_toEndOf="@+id/grid_1_2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/grid_1_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="110dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_2_2"
-        app:layout_constraintEnd_toStartOf="@+id/grid_1_3"
-        app:layout_constraintStart_toEndOf="@+id/grid_1_1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/grid_2_5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="72dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_3_5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/grid_2_4"
-        app:layout_constraintTop_toBottomOf="@+id/grid_1_5" />
-
-    <Button
-        android:id="@+id/grid_2_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_3_2"
-        app:layout_constraintEnd_toStartOf="@+id/grid_2_3"
-        app:layout_constraintStart_toEndOf="@+id/grid_2_1"
-        app:layout_constraintTop_toBottomOf="@+id/grid_1_2" />
-
-    <Button
-        android:id="@+id/grid_3_4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_4_4"
-        app:layout_constraintEnd_toStartOf="@+id/grid_3_5"
-        app:layout_constraintStart_toEndOf="@+id/grid_3_3"
-        app:layout_constraintTop_toBottomOf="@+id/grid_2_4" />
-
-    <Button
-        android:id="@+id/grid_2_4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_3_4"
-        app:layout_constraintEnd_toStartOf="@+id/grid_2_5"
-        app:layout_constraintStart_toEndOf="@+id/grid_2_3"
-        app:layout_constraintTop_toBottomOf="@+id/grid_1_4" />
-
-    <Button
-        android:id="@+id/grid_1_1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="110dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_2_1"
-        app:layout_constraintEnd_toStartOf="@+id/grid_1_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/grid_3_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_4_2"
-        app:layout_constraintEnd_toStartOf="@+id/grid_3_3"
-        app:layout_constraintStart_toEndOf="@+id/gird_3_1"
-        app:layout_constraintTop_toBottomOf="@+id/grid_2_2" />
-
-    <Button
-        android:id="@+id/grid_1_4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="110dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_2_4"
-        app:layout_constraintEnd_toStartOf="@+id/grid_1_5"
-        app:layout_constraintStart_toEndOf="@+id/grid_1_3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/grid_5_4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="425dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/grid_5_5"
-        app:layout_constraintStart_toEndOf="@+id/grid_5_3"
-        app:layout_constraintTop_toBottomOf="@+id/grid_4_4" />
-
-    <Button
-        android:id="@+id/grid_5_5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="425dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/grid_5_4"
-        app:layout_constraintTop_toBottomOf="@+id/grid_4_5" />
-
-    <Button
-        android:id="@+id/grid_4_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_5_2"
-        app:layout_constraintEnd_toStartOf="@+id/grid_4_3"
-        app:layout_constraintStart_toEndOf="@+id/grid_4_1"
-        app:layout_constraintTop_toBottomOf="@+id/grid_3_2" />
-
-    <Button
-        android:id="@+id/grid_3_3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_4_3"
-        app:layout_constraintEnd_toStartOf="@+id/grid_3_4"
-        app:layout_constraintStart_toEndOf="@+id/grid_3_2"
-        app:layout_constraintTop_toBottomOf="@+id/grid_2_3" />
-
-    <Button
-        android:id="@+id/grid_4_3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_5_3"
-        app:layout_constraintEnd_toStartOf="@+id/grid_4_4"
-        app:layout_constraintStart_toEndOf="@+id/grid_4_2"
-        app:layout_constraintTop_toBottomOf="@+id/grid_3_3" />
-
-    <Button
-        android:id="@+id/grid_4_4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_5_4"
-        app:layout_constraintEnd_toStartOf="@+id/grid_4_5"
-        app:layout_constraintStart_toEndOf="@+id/grid_4_3"
-        app:layout_constraintTop_toBottomOf="@+id/grid_3_4" />
-
-    <Button
-        android:id="@+id/grid_4_1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="71dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_5_1"
-        app:layout_constraintEnd_toStartOf="@+id/grid_4_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gird_3_1" />
-
-    <Button
-        android:id="@+id/grid_3_5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="72dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_4_5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/grid_3_4"
-        app:layout_constraintTop_toBottomOf="@+id/grid_2_5" />
-
-    <Button
-        android:id="@+id/grid_5_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="425dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/grid_5_3"
-        app:layout_constraintStart_toEndOf="@+id/grid_5_1"
-        app:layout_constraintTop_toBottomOf="@+id/grid_4_2" />
-
-    <Button
-        android:id="@+id/grid_5_3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="425dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/grid_5_4"
-        app:layout_constraintStart_toEndOf="@+id/grid_5_2"
-        app:layout_constraintTop_toBottomOf="@+id/grid_4_3" />
-
-    <Button
-        android:id="@+id/grid_2_1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="71dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/gird_3_1"
-        app:layout_constraintEnd_toStartOf="@+id/grid_2_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grid_1_1" />
-
-    <Button
-        android:id="@+id/grid_2_3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_3_3"
-        app:layout_constraintEnd_toStartOf="@+id/grid_2_4"
-        app:layout_constraintStart_toEndOf="@+id/grid_2_2"
-        app:layout_constraintTop_toBottomOf="@+id/grid_1_3" />
-
-    <Button
-        android:id="@+id/grid_1_5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="72dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toTopOf="@+id/grid_2_5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/grid_1_4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/grid_5_1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="71dp"
-        android:layout_marginBottom="425dp"
-        android:text="@string/blank_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/grid_5_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grid_4_1" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
+    <TableRow
+        android:id="@+id/tableRow_game_row1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="gird_3_1,grid_1_3,grid_4_5,grid_1_2,grid_2_5,grid_2_2,grid_3_4,grid_2_4,grid_1_1,grid_3_2,grid_1_4,grid_5_4,grid_5_5,grid_4_2,grid_5_1,grid_3_3,grid_4_3,grid_4_4,grid_4_1,grid_3_5,grid_5_2,grid_5_3,grid_2_1,grid_2_3,grid_1_5" />
+        android:gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/grid_1_1"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_1_2"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_1_3"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_1_4"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_1_5"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow_game_row2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/grid_2_1"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_2_2"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_2_3"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_2_4"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_2_5"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow_game_row3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/grid_3_1"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_3_2"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_3_3"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_3_4"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_3_5"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow_game_row4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/grid_4_1"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_4_2"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_4_3"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_4_4"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_4_5"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow_game_row5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/grid_5_1"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_5_2"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_5_3"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_5_4"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+        <Button
+            android:id="@+id/grid_5_5"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/grid_button" />
+
+    </TableRow>
+
+</LinearLayout>

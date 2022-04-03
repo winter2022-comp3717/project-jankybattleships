@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-import com.bcit.jankybattleships.R;
 import com.bcit.jankybattleships.fragments.GameFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -27,9 +24,9 @@ public class GameActivity extends AppCompatActivity {
         boolean showPlayerBoard = false;
 
         if(!showPlayerBoard) {
-            fragmentTransaction.replace(R.id.main_game_fragment, new GameFragment());
+            fragmentTransaction.replace(R.id.fragmentContainerView_game, new GameFragment());
         } else {
-            fragmentTransaction.replace(R.id.main_game_fragment, new GameFragment());
+            fragmentTransaction.replace(R.id.fragmentContainerView_game, new GameFragment());
             showPlayerBoard = true;
         }
 

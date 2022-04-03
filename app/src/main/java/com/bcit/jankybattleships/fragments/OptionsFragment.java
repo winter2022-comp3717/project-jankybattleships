@@ -31,7 +31,7 @@ import com.google.android.gms.tasks.Task;
 public class OptionsFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+//    private static final String ARG_PARAM1 = "param1";
 
 //    private String mParam1;
 
@@ -69,10 +69,11 @@ public class OptionsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_options, container, false);
     }
 
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     protected void updateTheme(View view) {
         TextView title = view.findViewById(R.id.textView_options_title);
         TextView name = view.findViewById(R.id.textView_options_nametitle);
-        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchy = view.findViewById(R.id.switch_options);
+        Switch switchy = view.findViewById(R.id.switch_options);
         TextView lang = view.findViewById(R.id.textView_options_langtitle);
 
         if (MainActivity.DARK_MODE) {

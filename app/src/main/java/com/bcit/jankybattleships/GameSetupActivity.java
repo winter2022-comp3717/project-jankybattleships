@@ -46,10 +46,10 @@ public class GameSetupActivity extends AppCompatActivity {
             }
         });
 
-        Button submitPlacement = findViewById(R.id.confirm_placement);
-        EditText patrolPosition = findViewById(R.id.patrol_pos_input);
-        EditText destroyPosition = findViewById(R.id.destroyer_pos_input);
-        EditText cruisePosition = findViewById(R.id.cruiser_pos_input);
+        Button submitPlacement = findViewById(R.id.button_setup_confirm);
+        EditText patrolPosition = findViewById(R.id.editText_setup_patrol);
+        EditText destroyPosition = findViewById(R.id.editText_setup_destroyer);
+        EditText cruisePosition = findViewById(R.id.editText_setup_cruiser);
 
         String patrolPositionString = patrolPosition.getText().toString();
         String destroyPositionString = destroyPosition.getText().toString();

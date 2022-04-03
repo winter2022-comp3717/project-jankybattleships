@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bcit.jankybattleships.LeaderboardAdapter;
+import com.bcit.jankybattleships.MainActivity;
 import com.bcit.jankybattleships.R;
 
 /**
@@ -24,9 +25,9 @@ import com.bcit.jankybattleships.R;
 public class LeaderboardFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+//    private static final String ARG_PARAM1 = "param1";
 
-    private String mParam1;
+//    private String mParam1;
 
     public LeaderboardFragment() {
         // Required empty public constructor
@@ -49,9 +50,9 @@ public class LeaderboardFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-        }
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//        }
     }
 
     @Override
