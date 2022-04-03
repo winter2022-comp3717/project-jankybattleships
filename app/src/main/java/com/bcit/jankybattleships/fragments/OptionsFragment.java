@@ -1,6 +1,7 @@
 package com.bcit.jankybattleships.fragments;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.bcit.jankybattleships.MainActivity;
 import com.bcit.jankybattleships.R;
@@ -67,15 +69,47 @@ public class OptionsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_options, container, false);
     }
 
+    protected void updateTheme(View view) {
+        TextView title = view.findViewById(R.id.textView_options_title);
+        TextView name = view.findViewById(R.id.textView_options_nametitle);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchy = view.findViewById(R.id.switch_options);
+        TextView lang = view.findViewById(R.id.textView_options_langtitle);
+
+        if (MainActivity.DARK_MODE) {
+            title.setTextColor(Color.WHITE);
+            name.setTextColor(Color.WHITE);
+            switchy.setTextColor(Color.WHITE);
+            lang.setTextColor(Color.WHITE);
+        } else {
+            title.setTextColor(Color.BLACK);
+            name.setTextColor(Color.BLACK);
+            switchy.setTextColor(Color.BLACK);
+            lang.setTextColor(Color.BLACK);
+        }
+    }
+
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Switch theme = view.findViewById(R.id.switch_options);
-        theme.setOnCheckedChangeListener((compoundButton, b) -> {
-            MainActivity.DARK_MODE = b;
-            ((MainActivity) requireActivity()).setLightMode(view);
+        theme.setChecked(MainActivity.DARK_MODE);
+        theme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    MainActivity.DARK_MODE = true;
+                } else {
+                    MainActivity.DARK_MODE = false;
+                }
+                updateTheme(view);
+                ((MainActivity) requireActivity()).setLightMode(view);
+                ((MainActivity) requireActivity()).updateNavTheme();
+                ((MainActivity) requireActivity()).setModeMain();
+            }
         });
+
+        updateTheme(view);
 
         Button signOutButton = view.findViewById(R.id.button_options_logout);
         signOutButton.setOnClickListener(v -> {

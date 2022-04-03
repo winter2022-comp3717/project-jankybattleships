@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.w3c.dom.Text;
+
 public class JoinGameActivity extends AppCompatActivity {
 
     @SuppressLint("DefaultLocale")
@@ -24,6 +27,18 @@ public class JoinGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_game);
+
+        TextView label = findViewById(R.id.textView_join_codelabel);
+        EditText editText = findViewById(R.id.editText_join);
+        if (MainActivity.DARK_MODE) {
+            getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+            label.setTextColor(Color.WHITE);
+            editText.setTextColor(Color.WHITE);
+        } else {
+            getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+            label.setTextColor(Color.BLACK);
+            editText.setTextColor(Color.WHITE);
+        }
 
         Button button = findViewById(R.id.button_join_submit);
         button.setOnClickListener(v -> joinGameSession());

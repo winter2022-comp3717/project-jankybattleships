@@ -1,6 +1,7 @@
 package com.bcit.jankybattleships.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.bcit.jankybattleships.HostGameActivity;
 import com.bcit.jankybattleships.JoinGameActivity;
@@ -68,6 +70,12 @@ public class MenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        TextView title = view.findViewById(R.id.textView_menu);
+        if (MainActivity.DARK_MODE) {
+            title.setTextColor(Color.WHITE);
+        } else {
+            title.setTextColor(Color.BLACK);
+        }
         Button hostButton = view.findViewById(R.id.button_menu_host);
         Button joinButton = view.findViewById(R.id.button_menu_join);
         hostButton.setOnClickListener(v -> {
