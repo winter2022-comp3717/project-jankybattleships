@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.bcit.jankybattleships.data.GameSession;
 import com.bcit.jankybattleships.data.GameStatus;
@@ -61,9 +63,6 @@ public class GameSetupActivity extends AppCompatActivity {
 
         Button submitButton = findViewById(R.id.button_setup_confirm);
         Button previewButton = findViewById(R.id.button_setup_preview);
-        EditText patrolEditText = findViewById(R.id.editText_setup_patrol);
-        EditText destroyerEditText = findViewById(R.id.editText_setup_destroyer);
-        EditText battleshipEditText = findViewById(R.id.editText_setup_battleship);
 
         submitButton.setOnClickListener(view -> submitPositions());
         previewButton.setOnClickListener(view -> previewPositions());
@@ -77,18 +76,20 @@ public class GameSetupActivity extends AppCompatActivity {
         /*
         Take the inputs from the text boxes, convert them to parts a grid and submit to Firebase.
          */
+        TextView waitTextView = findViewById(R.id.textView_setup_wait);
         populateCoordsList();
         if (player.getPlayerNum() == 1) {
             session.updateGameStatus(GameStatus.PLACEMENT_WAIT_FOR_P2);
         } else {
             session.updateGameStatus(GameStatus.PLACEMENT_WAIT_FOR_P1);
         }
+
         DocumentReference df = db.collection("sessions")
                 .document(session.getSessionCode());
-
         df.update(String.format("p%d_coordinates", player.getPlayerNum()), coordinates)
                 .addOnSuccessListener(aVoid -> {
                     Log.d("INFO", "Game status successfully updated!");
+                    waitTextView.setVisibility(View.VISIBLE);
                     startGameOnPlacementEnd();
                 })
                 .addOnFailureListener(e -> Log.w("ERROR", "Error updating status", e));
