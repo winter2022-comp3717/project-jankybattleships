@@ -15,6 +15,10 @@ import java.util.Map;
 
 public class GameSession implements Serializable {
 
+    public static final String EXTRA_NEW_GAME_SESSION =
+            "com.bcit.jankybattleships.data.NEW_GAME_SESSION";
+    public static final int REFRESH_DELAY = 5000;
+
     private String sessionCode = null;
     private GameStatus status = null;
     private Map<String, Long> scores = new HashMap<>();
@@ -36,15 +40,22 @@ public class GameSession implements Serializable {
                 .addOnFailureListener(e -> Log.w("ERROR", "Error adding document", e));
     }
 
-    public void updateSessionOnP2Join() {
+    public void updateGameStatus(GameStatus newStatus) {
+        status = GameStatus.SHIP_PLACEMENT;
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference df = db.collection("sessions").document(sessionCode);
-        df.update("status", GameStatus.SHIP_PLACEMENT)
+        df.update("status", newStatus)
                 .addOnSuccessListener(aVoid -> Log.d("INFO",
                         "Game status successfully updated!"))
                 .addOnFailureListener(e -> Log.w("ERROR", "Error updating status", e));
+    }
 
-        df.update(String.format("scores.%s", getUserIdOrAnonString(2)), 0)
+    public void updateGameScoreForPlayer(int playerNumber, int newScore) {
+        scores.replace(getUserIdOrAnonString(playerNumber), (long) newScore);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference df = db.collection("sessions").document(sessionCode);
+
+        df.update(String.format("scores.%s", getUserIdOrAnonString(playerNumber)), newScore)
                 .addOnSuccessListener(aVoid -> Log.d("INFO",
                         "Game scores successfully updated!"))
                 .addOnFailureListener(e -> Log.w("ERROR", "Error updating scores", e));

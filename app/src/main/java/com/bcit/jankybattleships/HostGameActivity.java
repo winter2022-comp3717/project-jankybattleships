@@ -26,7 +26,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class HostGameActivity extends AppCompatActivity {
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private static final int REFRESH_DELAY = 5000;
     private final GameSession session = new GameSession();
 
     @Override
@@ -96,17 +95,17 @@ public class HostGameActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(),
                             GameSetupActivity.class);
                     Bundle extras = new Bundle();
-                    extras.putSerializable(MainActivity.EXTRA_NEW_GAME_SESSION, session);
-                    extras.putSerializable(MainActivity.EXTRA_PLAYER,
+                    extras.putSerializable(GameSession.EXTRA_NEW_GAME_SESSION, session);
+                    extras.putSerializable(Player.EXTRA_PLAYER,
                             new Player(session.getUserIdOrAnonString(1),
                                     1));
                     intent.putExtras(extras);
                     startActivity(intent);
                 } else {
-                    handler.postDelayed(this, REFRESH_DELAY);
+                    handler.postDelayed(this, GameSession.REFRESH_DELAY);
                 }
             }
         };
-        handler.postDelayed(runnable, REFRESH_DELAY);
+        handler.postDelayed(runnable, GameSession.REFRESH_DELAY);
     }
 }

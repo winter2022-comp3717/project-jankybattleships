@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Player implements Serializable {
 
+    public static final String EXTRA_PLAYER = "com.bcit.jankybattleships.data.PLAYER";
+
     private String id;
     private int playerNum;
 

@@ -30,10 +30,6 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NEW_GAME_SESSION =
-            "com.bcit.jankybattleships.NEW_GAME_SESSION";
-    public static final String EXTRA_PLAYER = "com.bcit.jankybattleships.PLAYER";
-
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static FirebaseUser user = null;
     public static boolean DARK_MODE = false;

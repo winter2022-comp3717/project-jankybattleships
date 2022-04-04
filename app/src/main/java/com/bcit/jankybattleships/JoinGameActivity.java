@@ -57,15 +57,15 @@ public class JoinGameActivity extends AppCompatActivity {
                 DocumentSnapshot document = task.getResult();
                 editText.setText("");
                 if (document.exists()) {
-                    session.setSessionCode(document.getId());
-                    session.setStatus(GameStatus.SHIP_PLACEMENT);
                     errorTextView.setText("");
-                    session.updateSessionOnP2Join();
+                    session.setSessionCode(document.getId());
+                    session.updateGameStatus(GameStatus.SHIP_PLACEMENT);
+                    session.updateGameScoreForPlayer(2, 0);
 
                     Intent intent = new Intent(this, GameSetupActivity.class);
                     Bundle extras = new Bundle();
-                    extras.putSerializable(MainActivity.EXTRA_NEW_GAME_SESSION, session);
-                    extras.putSerializable(MainActivity.EXTRA_PLAYER,
+                    extras.putSerializable(GameSession.EXTRA_NEW_GAME_SESSION, session);
+                    extras.putSerializable(Player.EXTRA_PLAYER,
                             new Player(session.getUserIdOrAnonString(2), 2));
                     intent.putExtras(extras);
                     startActivity(intent);
