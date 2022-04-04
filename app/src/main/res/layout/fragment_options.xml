@@ -21,24 +21,11 @@
         app:layout_constraintStart_toEndOf="@+id/textView_options_nametitle"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner_options"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="52dp"
-        android:contentDescription="@string/english"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch_options" />
-
     <TextView
         android:id="@+id/textView_options_nametitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="20dp"
         android:text="@string/display_name"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/editText_options_namefield"
@@ -49,30 +36,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="52dp"
         android:minHeight="48dp"
         android:text="@string/dark_mode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_options_namefield" />
-
-    <TextView
-        android:id="@+id/textView_options_langtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/language"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_options"
-        app:layout_constraintStart_toStartOf="@+id/spinner_options" />
+        app:layout_constraintTop_toBottomOf="@+id/button_option_submit" />
 
     <EditText
         android:id="@+id/editText_options_namefield"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="53dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="11dp"
         android:layout_marginEnd="9dp"
         android:ems="10"
         android:hint="@string/enter_display_name"
@@ -88,11 +65,11 @@
         android:id="@+id/button_options_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginBottom="211dp"
         android:text="@string/log_out"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_options" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_option_submit"

@@ -74,20 +74,17 @@ public class OptionsFragment extends Fragment {
         TextView title = view.findViewById(R.id.textView_options_title);
         TextView name = view.findViewById(R.id.textView_options_nametitle);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchy = view.findViewById(R.id.switch_options);
-        TextView lang = view.findViewById(R.id.textView_options_langtitle);
         EditText change = view.findViewById(R.id.editText_options_namefield);
 
         if (MainActivity.DARK_MODE) {
             title.setTextColor(Color.WHITE);
             name.setTextColor(Color.WHITE);
             switchy.setTextColor(Color.WHITE);
-            lang.setTextColor(Color.WHITE);
             change.setTextColor(Color.WHITE);
         } else {
             title.setTextColor(Color.BLACK);
             name.setTextColor(Color.BLACK);
             switchy.setTextColor(Color.BLACK);
-            lang.setTextColor(Color.BLACK);
             change.setTextColor(Color.BLACK);
         }
     }
