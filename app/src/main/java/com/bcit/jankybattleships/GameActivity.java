@@ -37,7 +37,7 @@ public class GameActivity extends AppCompatActivity {
         if(!showPlayerBoard) {
             fragmentTransaction.replace(R.id.fragmentContainerView_game, new GameFragment());
         } else {
-            fragmentTransaction.replace(R.id.fragmentContainerView_game, new GameFragment());
+            fragmentTransaction.replace(R.id.fragmentContainerView_game, new GameFragment()); // Needs to be changed to reflect opposing board
             showPlayerBoard = true;
         }
 
