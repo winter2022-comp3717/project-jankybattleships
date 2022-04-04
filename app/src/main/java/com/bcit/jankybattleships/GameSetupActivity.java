@@ -154,7 +154,7 @@ public class GameSetupActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainerView_setup,
-                GameFragment.newInstance((ArrayList<String>) coordinates));
+                GameFragment.newInstance((ArrayList<String>) coordinates, null));
         fragmentTransaction.commit();
     }
 
@@ -170,6 +170,8 @@ public class GameSetupActivity extends AppCompatActivity {
 
     private List<String> getCoordinatesFromText(String text) {
         List<String> coords = new ArrayList<>();
+        if (text.isEmpty())
+            return coords;
         String[] splitText = text.split(", ");
         for (String str : splitText) {
             // adds "X,Y" (from "(X,Y)") to the list
