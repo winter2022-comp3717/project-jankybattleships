@@ -37,7 +37,7 @@ public class JoinGameActivity extends AppCompatActivity {
         } else {
             getWindow().getDecorView().setBackgroundColor(Color.WHITE);
             label.setTextColor(Color.BLACK);
-            editText.setTextColor(Color.WHITE);
+            editText.setTextColor(Color.BLACK);
         }
 
         Button button = findViewById(R.id.button_join_submit);

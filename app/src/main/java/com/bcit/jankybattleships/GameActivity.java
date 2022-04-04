@@ -3,8 +3,10 @@ package com.bcit.jankybattleships;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.bcit.jankybattleships.fragments.GameFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -18,6 +20,19 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_setup);
         setContentView(R.layout.activity_game);
+
+
+        TextView name1 = findViewById(R.id.textView_game);
+        TextView name2 = findViewById(R.id.textView_game_2);
+        if (MainActivity.DARK_MODE) {
+            getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+            name1.setTextColor(Color.WHITE);
+            name2.setTextColor(Color.WHITE);
+        } else {
+            getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+            name1.setTextColor(Color.BLACK);
+            name2.setTextColor(Color.BLACK);
+        }
 
         Button submit = findViewById(R.id.button_game_confirm);
         Button swap = findViewById(R.id.button_game_swap);

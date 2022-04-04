@@ -5,11 +5,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.bcit.jankybattleships.data.GameSession;
 import com.bcit.jankybattleships.data.GameStatus;
@@ -61,12 +64,37 @@ public class GameSetupActivity extends AppCompatActivity {
 
         Button submitButton = findViewById(R.id.button_setup_confirm);
         Button previewButton = findViewById(R.id.button_setup_preview);
-        EditText patrolEditText = findViewById(R.id.editText_setup_patrol);
-        EditText destroyerEditText = findViewById(R.id.editText_setup_destroyer);
-        EditText battleshipEditText = findViewById(R.id.editText_setup_battleship);
 
         submitButton.setOnClickListener(view -> submitPositions());
         previewButton.setOnClickListener(view -> previewPositions());
+
+        TextView wait = findViewById(R.id.textView_setup_wait);
+        TextView battleship = findViewById(R.id.textView_setup_battleship);
+        TextView destroyer = findViewById(R.id.textView_setup_destroyer);
+        TextView patrol = findViewById(R.id.textView_setup_patrol);
+        EditText bat = findViewById(R.id.editText_setup_battleship);
+        EditText des = findViewById(R.id.editText_setup_destroyer);
+        EditText pat = findViewById(R.id.editText_setup_patrol);
+        if (MainActivity.DARK_MODE) {
+            wait.setTextColor(Color.WHITE);
+            battleship.setTextColor(Color.WHITE);
+            destroyer.setTextColor(Color.WHITE);
+            patrol.setTextColor(Color.WHITE);
+            bat.setTextColor(Color.WHITE);
+            des.setTextColor(Color.WHITE);
+            pat.setTextColor(Color.WHITE);
+            getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+        } else {
+            wait.setTextColor(Color.BLACK);
+            battleship.setTextColor(Color.BLACK);
+            destroyer.setTextColor(Color.BLACK);
+            patrol.setTextColor(Color.BLACK);
+            bat.setTextColor(Color.BLACK);
+            des.setTextColor(Color.BLACK);
+            pat.setTextColor(Color.BLACK);
+            getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+        }
+
     }
 
     /**
@@ -77,18 +105,20 @@ public class GameSetupActivity extends AppCompatActivity {
         /*
         Take the inputs from the text boxes, convert them to parts a grid and submit to Firebase.
          */
+        TextView waitTextView = findViewById(R.id.textView_setup_wait);
         populateCoordsList();
         if (player.getPlayerNum() == 1) {
             session.updateGameStatus(GameStatus.PLACEMENT_WAIT_FOR_P2);
         } else {
             session.updateGameStatus(GameStatus.PLACEMENT_WAIT_FOR_P1);
         }
+
         DocumentReference df = db.collection("sessions")
                 .document(session.getSessionCode());
-
         df.update(String.format("p%d_coordinates", player.getPlayerNum()), coordinates)
                 .addOnSuccessListener(aVoid -> {
                     Log.d("INFO", "Game status successfully updated!");
+                    waitTextView.setVisibility(View.VISIBLE);
                     startGameOnPlacementEnd();
                 })
                 .addOnFailureListener(e -> Log.w("ERROR", "Error updating status", e));
